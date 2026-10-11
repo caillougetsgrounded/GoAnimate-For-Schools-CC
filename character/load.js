@@ -1,9 +1,10 @@
-const loadPost = require("../misc/post_body");
-const character = require("./main");
-const http = require("http");
+const fs = require('fs');
+const path = require('path');
+const folder = path.join(__dirname, '../', 'store');
+try {
+    if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
+} catch (e) {}
 
-/**
- * @param {http.IncomingMessage} req
  * @param {http.ServerResponse} res
  * @param {string} url
  * @returns {boolean}
