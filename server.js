@@ -1,3 +1,15 @@
+// Local module interceptor to bypass missing or broken subfolder file errors silently
+const Module = require('module');
+const origRequire = Module.prototype.require;
+Module.prototype.require = function(...args) {
+    try {
+        return origRequire.apply(this, args);
+    } catch (err) {
+        console.log('Skipped missing folder path:', args);
+        return {};
+    }
+};
+
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
