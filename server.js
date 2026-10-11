@@ -35,7 +35,7 @@ const tsl = require("./tts/load");
 const evt = require("./events");
 const url = require("url");
 
-const functions = [mvL, pmc, asl, evt, chl, thl, thL, chs, asL, tsl, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl];
+const functions = [mvL, pm, asl, evt, chl, thl, thL, chs, asL, tsl, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl];
 
 module.exports = http
 	.createServer((req, res) => {
