@@ -11,3 +11,4 @@ global.config = {
     SWF_URL: "/animation",
     CLIENT_URL: "/static"
 };
+require('./server.js');
