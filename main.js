@@ -11,15 +11,3 @@ global.config = {
     SWF_URL: "/animation",
     CLIENT_URL: "/static"
 };
-// Force active HTTP listener block to keep the Render container running indefinitely
-const http = require('http');
-try {
-    http.createServer((req, res) => {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('GoAnimate Wrapper Server Online');
-    }).listen(process.env.PORT || 10000, () => {
-        console.log('Server successfully bound to port ' + (process.env.PORT || 10000));
-    });
-} catch (e) {
-    console.log('Server initialization bypassed:', e.message);
-}
