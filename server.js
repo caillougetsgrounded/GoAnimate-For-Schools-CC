@@ -1,9 +1,9 @@
-const env = Object.assign(process.env, require("./env"), require("./config"));
-
-const http = require("http");
-const pmc = require("./character/premade");
-const chl = require("./character/load");
-const chs = require("./character/save");
+const fs = require('fs');
+const path = require('path');
+const http = require('http');
+try {
+    if (!global.config) global.config = { STORE_URL: '/store', SWF_URL: '/animation', CLIENT_URL: '/static' };
+} catch (e) {}
 const mvu = require("./movie/upload");
 const asu = require("./asset/upload");
 const stl = require("./static/load");
