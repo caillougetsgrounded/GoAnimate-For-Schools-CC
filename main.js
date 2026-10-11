@@ -11,18 +11,6 @@ const origExists = fs.existsSync;
 fs.existsSync = (p) => { if (typeof p !== 'string') return false; return origExists(p); };
 const origReaddir = fs.readdirSync;
 fs.readdirSync = (p, o) => { if (typeof p !== 'string') return []; return origReaddir(p, o); };
-// Global module interceptor to bypass missing or broken file errors silently
-const Module = require('module');
-const origRequire = Module.prototype.require;
-Module.prototype.require = function(...args) {
-    try {
-        return origRequire.apply(this, args);
-    } catch (err) {
-        console.log('Bypassed broken module loading path:', args[0]);
-        // Return a mock object so dependent files don't crash immediately
-        return {};
-    }
-};
 
 global.config = {
     STORE_URL: "/store",
